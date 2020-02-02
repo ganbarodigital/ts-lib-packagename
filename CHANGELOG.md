@@ -21,7 +21,9 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
-### Backwards-Compatibility Breaks
+## v0.1.0
+
+Released Sunday, 2nd February 2020.
 
 ### New
 
@@ -29,23 +31,3 @@ The following changes have been completed, and will be included in the next tagg
 * Added `isPackageNameData()` data guard.
 * Added `mustBePackageNameData()` data guarantee.
 * Added `packageNameFrom()` smart constructor.
-
-### Fixes
-
-### Dependencies
-
-### Tools
-
-## v0.0.1
-
-Released Monday, 1st January 2020.
-
-### Backwards-Compatibility Breaks
-
-### New
-
-### Fixes
-
-### Dependencies
-
-### Tools
