@@ -7,6 +7,10 @@ This TypeScript micro-library provides a `PackageName` type, along with helpers 
 - [Introduction](#introduction)
 - [Quick Start](#quick-start)
 - [V1 API](#v1-api)
+  - [PackageName](#packagename)
+  - [packageNameFrom()](#packagenamefrom)
+  - [isPackageNameData()](#ispackagenamedata)
+  - [mustBePackageNameData()](#mustbepackagenamedata)
 - [NPM Scripts](#npm-scripts)
   - [npm run clean](#npm-run-clean)
   - [npm run build](#npm-run-build)
@@ -22,14 +26,80 @@ npm install @ganbarodigital/ts-lib-packagename/v1
 
 ```typescript
 // add this import to your Typescript code
-import { PackageName, isPackageNameData } from "@ganbarodigital/ts-lib-packagename/v1"
+import { PackageName, packageNameFrom } from "@ganbarodigital/ts-lib-packagename/v1"
 ```
 
 __VS Code users:__ once you've added a single import anywhere in your project, you'll then be able to auto-import anything else that this library exports.
 
 ## V1 API
 
-TBD.
+### PackageName
+
+```typescript
+/**
+ * represents the name of a TypeScript package
+ *
+ * the package can be:
+ * - any valid NPM package name
+ * - and can include sub-package names too
+ *
+ * Sub-package names can include uppercase characters.
+ *
+ * examples of valid PackageNames include:
+ *
+ * - ts-lib-packagename
+ * - @ganbarodigital/ts-lib-packagename
+ * - @ganbarodigital/ts-lib-packagename/v1
+ * - @ganbarodigital/ts-lib-packagename/V1/types
+ *
+ * Relative module names are not supported.
+ *
+ * At runtime, PackageName resolves to being just a `string`.
+ */
+export type PackageName = string & { _type: "@ganbarodigital/PackageName" };
+```
+
+`PackageName` is a _type_. (Strictly speaking, it's a _branded type_.) Use it to represent a valid TypeScript package name in type-safe code.
+
+Use [`packageNameFrom()`](#packagenamefrom) to create `PackageName` values.
+
+### packageNameFrom()
+
+```typescript
+/**
+ * smart constructor. Checks that the input string is a valid package name,
+ * and converts it into a PackageName type.
+ */
+export function packageNameFrom(name: string, onError: OnError): PackageName;
+```
+
+`packageNameFrom()` is a _smart constructor_. Use it to turn strings into `PackageName` types.
+
+### isPackageNameData()
+
+```typescript
+/**
+ * data guard. confirms if a proposed name for a PackageName fits
+ * our legal scheme or not.
+ */
+export function isPackageNameData(name: string): boolean;
+```
+
+`isPackageNameData()` is a _data guard_. Use it to determine if the input string contains a valid PackageName or not.
+
+We do not check that the named package actually exists. We only check that the name meets our naming structure.
+
+### mustBePackageNameData()
+
+```typescript
+/**
+ * data guarantee. calls the supplied OnError handler if the input string
+ * does not meet the specification for a valid PackageName.
+ */
+export function mustBePackageNameData(name: string, onError: OnError): void;
+```
+
+`mustBePackageNameData()` is a _data guarantee_. Use it to ensure that you're handling a valid PackageName string.
 
 ## NPM Scripts
 
