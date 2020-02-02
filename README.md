@@ -8,6 +8,7 @@ This TypeScript micro-library provides a `PackageName` type, along with helpers 
 - [Quick Start](#quick-start)
 - [V1 API](#v1-api)
   - [PackageName](#packagename)
+  - [packageNameFrom()](#packagenamefrom)
   - [isPackageNameData()](#ispackagenamedata)
   - [mustBePackageNameData()](#mustbepackagenamedata)
 - [NPM Scripts](#npm-scripts)
@@ -25,7 +26,7 @@ npm install @ganbarodigital/ts-lib-packagename/v1
 
 ```typescript
 // add this import to your Typescript code
-import { PackageName, isPackageNameData } from "@ganbarodigital/ts-lib-packagename/v1"
+import { PackageName, packageNameFrom } from "@ganbarodigital/ts-lib-packagename/v1"
 ```
 
 __VS Code users:__ once you've added a single import anywhere in your project, you'll then be able to auto-import anything else that this library exports.
@@ -59,6 +60,20 @@ export type PackageName = string & { _type: "@ganbarodigital/PackageName" };
 ```
 
 `PackageName` is a _type_. (Strictly speaking, it's a _branded type_.) Use it to represent a valid TypeScript package name in type-safe code.
+
+Use [`packageNameFrom()`](#packagenamefrom) to create `PackageName` values.
+
+### packageNameFrom()
+
+```typescript
+/**
+ * smart constructor. Checks that the input string is a valid package name,
+ * and converts it into a PackageName type.
+ */
+export function packageNameFrom(name: string, onError: OnError): PackageName;
+```
+
+`packageNameFrom()` is a _smart constructor_. Use it to turn strings into `PackageName` types.
 
 ### isPackageNameData()
 

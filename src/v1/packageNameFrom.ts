@@ -31,8 +31,16 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { OnError } from "@ganbarodigital/ts-on-error/V1";
 
-export * from "./PackageName";
-export * from "./isPackageNameData";
-export * from "./mustBePackageNameData";
-export * from "./packageNameFrom";
+import { mustBePackageNameData } from "./mustBePackageNameData";
+import { PackageName } from "./PackageName";
+
+/**
+ * smart constructor. Checks that the input string is a valid package name,
+ * and converts it into a PackageName type.
+ */
+export function packageNameFrom(name: string, onError: OnError): PackageName {
+    mustBePackageNameData(name, onError);
+    return name as PackageName;
+}
