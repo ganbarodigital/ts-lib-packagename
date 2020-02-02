@@ -7,6 +7,7 @@ This TypeScript micro-library provides a `PackageName` type, along with helpers 
 - [Introduction](#introduction)
 - [Quick Start](#quick-start)
 - [V1 API](#v1-api)
+  - [PackageName](#packagename)
 - [NPM Scripts](#npm-scripts)
   - [npm run clean](#npm-run-clean)
   - [npm run build](#npm-run-build)
@@ -29,7 +30,33 @@ __VS Code users:__ once you've added a single import anywhere in your project, y
 
 ## V1 API
 
-TBD.
+### PackageName
+
+```typescript
+/**
+ * represents the name of a TypeScript package
+ *
+ * the package can be:
+ * - any valid NPM package name
+ * - and can include sub-package names too
+ *
+ * Sub-package names can include uppercase characters.
+ *
+ * examples of valid PackageNames include:
+ *
+ * - ts-lib-packagename
+ * - @ganbarodigital/ts-lib-packagename
+ * - @ganbarodigital/ts-lib-packagename/v1
+ * - @ganbarodigital/ts-lib-packagename/V1/types
+ *
+ * Relative module names are not supported.
+ *
+ * At runtime, PackageName resolves to being just a `string`.
+ */
+export type PackageName = string & { _type: "@ganbarodigital/PackageName" };
+```
+
+`PackageName` is a _type_. (Strictly speaking, it's a _branded type_.) Use it to represent a valid TypeScript package name in type-safe code.
 
 ## NPM Scripts
 
