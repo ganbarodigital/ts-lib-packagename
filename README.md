@@ -8,6 +8,7 @@ This TypeScript micro-library provides a `PackageName` type, along with helpers 
 - [Quick Start](#quick-start)
 - [V1 API](#v1-api)
   - [PackageName](#packagename)
+  - [isPackageNameData()](#ispackagenamedata)
 - [NPM Scripts](#npm-scripts)
   - [npm run clean](#npm-run-clean)
   - [npm run build](#npm-run-build)
@@ -57,6 +58,20 @@ export type PackageName = string & { _type: "@ganbarodigital/PackageName" };
 ```
 
 `PackageName` is a _type_. (Strictly speaking, it's a _branded type_.) Use it to represent a valid TypeScript package name in type-safe code.
+
+### isPackageNameData()
+
+```typescript
+/**
+ * data guard. confirms if a proposed name for a PackageName fits
+ * our legal scheme or not.
+ */
+export function isPackageNameData(name: string): boolean;
+```
+
+`isPackageNameData()` is a _data guard_. Use it to determine if the input string contains a valid PackageName or not.
+
+We do not check that the named package actually exists. We only check that the name meets our naming structure.
 
 ## NPM Scripts
 
