@@ -9,6 +9,7 @@ This TypeScript micro-library provides a `PackageName` type, along with helpers 
 - [V1 API](#v1-api)
   - [PackageName](#packagename)
   - [isPackageNameData()](#ispackagenamedata)
+  - [mustBePackageNameData()](#mustbepackagenamedata)
 - [NPM Scripts](#npm-scripts)
   - [npm run clean](#npm-run-clean)
   - [npm run build](#npm-run-build)
@@ -72,6 +73,18 @@ export function isPackageNameData(name: string): boolean;
 `isPackageNameData()` is a _data guard_. Use it to determine if the input string contains a valid PackageName or not.
 
 We do not check that the named package actually exists. We only check that the name meets our naming structure.
+
+### mustBePackageNameData()
+
+```typescript
+/**
+ * data guarantee. calls the supplied OnError handler if the input string
+ * does not meet the specification for a valid PackageName.
+ */
+export function mustBePackageNameData(name: string, onError: OnError): void;
+```
+
+`mustBePackageNameData()` is a _data guarantee_. Use it to ensure that you're handling a valid PackageName string.
 
 ## NPM Scripts
 

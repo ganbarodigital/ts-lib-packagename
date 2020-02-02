@@ -27,6 +27,7 @@ The following changes have been completed, and will be included in the next tagg
 
 * Added `PackageName` type.
 * Added `isPackageNameData()` data guard.
+* Added `mustBePackageNameData()` data guarantee.
 
 ### Fixes
 
