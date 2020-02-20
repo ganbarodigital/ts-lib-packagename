@@ -21,6 +21,10 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+## Backwards-Compatibility Breaks
+
+* All error handling has been switched over to the `@ganbarodigital/ts-lib-error-reporting` library.
+
 ## v0.1.0
 
 Released Sunday, 2nd February 2020.

@@ -31,7 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { OnError } from "@ganbarodigital/ts-on-error/V1";
+import { OnError, THROW_THE_ERROR } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 
 import { mustBePackageNameData } from "./mustBePackageNameData";
 import { PackageName } from "./PackageName";
@@ -40,7 +40,7 @@ import { PackageName } from "./PackageName";
  * smart constructor. Checks that the input string is a valid package name,
  * and converts it into a PackageName type.
  */
-export function packageNameFrom(name: string, onError: OnError): PackageName {
+export function packageNameFrom(name: string, onError: OnError = THROW_THE_ERROR): PackageName {
     mustBePackageNameData(name, onError);
     return name as PackageName;
 }

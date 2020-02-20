@@ -31,23 +31,34 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { OnError, THROW_THE_ERROR } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
+import {
+    ErrorTable,
+    ErrorTableTemplateWithNoExtraData,
+    ExtraDataTemplate,
+    NoExtraDataTemplate,
+} from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
+import { httpStatusCodeFrom } from "@ganbarodigital/ts-lib-http-types/lib/v1";
 
-import { InvalidPackageNameError } from "../ErrorTable/InvalidPackageName";
-import { isPackageNameData } from "./isPackageNameData";
+import { packageNameFrom } from "../PackageName";
+import { InvalidPackageNameTemplate } from "./InvalidPackageName";
 
-/**
- * data guarantee. calls the supplied OnError handler if the input string
- * does not meet the specification for a valid PackageName.
- */
-export function mustBePackageNameData(
-    name: string,
-    onError: OnError = THROW_THE_ERROR,
-): void {
-    // what does the spec say?
-    if (!isPackageNameData(name)) {
-        onError(new InvalidPackageNameError({public: { packageName: name }}));
-    }
+const PACKAGE_NAME = packageNameFrom("@ganbarodigital/ts-lib-packagename/lib/v1");
 
-    // if we get here, all is well
+export class PackageErrorTable implements ErrorTable {
+    // everything in this class has to follow the same structure
+    [key: string]: ErrorTableTemplateWithNoExtraData<any, string, ExtraDataTemplate | NoExtraDataTemplate>;
+
+    public "invalid-package-name": InvalidPackageNameTemplate = {
+        packageName: PACKAGE_NAME,
+        errorName: "invalid-package-name",
+        detail: "package name does not meet spec 'isPackageName()'",
+        status: httpStatusCodeFrom(422),
+        extra: {
+            public: {
+                packageName: "the package name we were given",
+            },
+        },
+    };
 }
+
+export const ERROR_TABLE = new PackageErrorTable();

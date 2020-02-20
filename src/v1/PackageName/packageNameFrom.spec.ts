@@ -31,12 +31,13 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { AnyAppError } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 import { expect } from "chai";
 import { describe } from "mocha";
 
 import { packageNameFrom } from "./packageNameFrom";
 
-const onError = (reason: symbol, description: string, extra: object): never => {
+const onError = (e: AnyAppError): never => {
     throw new Error("ONERROR CALLED");
 };
 
@@ -45,7 +46,7 @@ describe("packageNameFrom()", () => {
         const inputValue = "ts-lib-apperror";
         const expectedValue = inputValue;
 
-        const actualValue = packageNameFrom(inputValue, onError);
+        const actualValue = packageNameFrom(inputValue);
 
         expect(actualValue).to.equal(expectedValue);
     });
@@ -54,7 +55,7 @@ describe("packageNameFrom()", () => {
         const inputValue = "@ganbarodigital/ts-lib-apperror";
         const expectedValue = inputValue;
 
-        const actualValue = packageNameFrom(inputValue, onError);
+        const actualValue = packageNameFrom(inputValue);
 
         expect(actualValue).to.equal(expectedValue);
     });
@@ -63,7 +64,7 @@ describe("packageNameFrom()", () => {
         const inputValue = "@ganbarodigital/ts-lib-apperror";
         const expectedValue = inputValue;
 
-        const actualValue = packageNameFrom(inputValue, onError);
+        const actualValue = packageNameFrom(inputValue);
 
         expect(actualValue).to.equal(expectedValue);
     });
@@ -78,7 +79,7 @@ describe("packageNameFrom()", () => {
             const inputValue = testData;
             const expectedValue = inputValue;
 
-            const actualValue = packageNameFrom(inputValue, onError);
+            const actualValue = packageNameFrom(inputValue);
 
             expect(actualValue).to.equal(expectedValue, "input value was: " + inputValue);
         }
@@ -95,7 +96,7 @@ describe("packageNameFrom()", () => {
             const inputValue = testData;
             const expectedValue = inputValue;
 
-            const actualValue = packageNameFrom(inputValue, onError);
+            const actualValue = packageNameFrom(inputValue);
 
             expect(actualValue).to.equal(expectedValue, "input value was: " + inputValue);
         }

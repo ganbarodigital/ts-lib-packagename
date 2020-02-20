@@ -31,23 +31,6 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { OnError, THROW_THE_ERROR } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 
-import { InvalidPackageNameError } from "../ErrorTable/InvalidPackageName";
-import { isPackageNameData } from "./isPackageNameData";
-
-/**
- * data guarantee. calls the supplied OnError handler if the input string
- * does not meet the specification for a valid PackageName.
- */
-export function mustBePackageNameData(
-    name: string,
-    onError: OnError = THROW_THE_ERROR,
-): void {
-    // what does the spec say?
-    if (!isPackageNameData(name)) {
-        onError(new InvalidPackageNameError({public: { packageName: name }}));
-    }
-
-    // if we get here, all is well
-}
+export { PackageErrorTable } from "./ErrorTable";
+export { InvalidPackageNameError } from "./InvalidPackageName";
