@@ -32,5 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./ErrorTable";
 export * from "./PackageName";
+export * from "./isPackageNameData";
+export * from "./mustBePackageNameData";
+export * from "./packageNameFrom";

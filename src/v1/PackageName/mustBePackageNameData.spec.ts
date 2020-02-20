@@ -31,41 +31,33 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
+import { AnyAppError } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 import { expect } from "chai";
 import { describe } from "mocha";
 
-import { packageNameFrom } from "./packageNameFrom";
+import { mustBePackageNameData } from "./mustBePackageNameData";
 
-const onError = (reason: symbol, description: string, extra: object): never => {
+const onError = (e: AnyAppError): never => {
     throw new Error("ONERROR CALLED");
 };
 
-describe("packageNameFrom()", () => {
-    it("supports non-scoped NPM package names", () => {
+describe("mustBePackageNameData()", () => {
+    it("accepts non-scoped NPM package names", () => {
         const inputValue = "ts-lib-apperror";
-        const expectedValue = inputValue;
 
-        const actualValue = packageNameFrom(inputValue, onError);
-
-        expect(actualValue).to.equal(expectedValue);
+        expect(() => { mustBePackageNameData(inputValue); }).to.not.throw();
     });
 
-    it("supports scoped NPM package names", () => {
+    it("accepts scoped NPM package names", () => {
         const inputValue = "@ganbarodigital/ts-lib-apperror";
-        const expectedValue = inputValue;
 
-        const actualValue = packageNameFrom(inputValue, onError);
-
-        expect(actualValue).to.equal(expectedValue);
+        expect(() => { mustBePackageNameData(inputValue); }).to.not.throw();
     });
 
     it("does not require a component after the package name", () => {
         const inputValue = "@ganbarodigital/ts-lib-apperror";
-        const expectedValue = inputValue;
 
-        const actualValue = packageNameFrom(inputValue, onError);
-
-        expect(actualValue).to.equal(expectedValue);
+        expect(() => { mustBePackageNameData(inputValue); }).to.not.throw();
     });
 
     it("supports sub-package names", () => {
@@ -76,11 +68,8 @@ describe("packageNameFrom()", () => {
 
         for (const testData of validNames) {
             const inputValue = testData;
-            const expectedValue = inputValue;
 
-            const actualValue = packageNameFrom(inputValue, onError);
-
-            expect(actualValue).to.equal(expectedValue, "input value was: " + inputValue);
+            expect(() => { mustBePackageNameData(inputValue); }).to.not.throw();
         }
     });
 
@@ -93,11 +82,8 @@ describe("packageNameFrom()", () => {
         // tslint:disable-next-line: forin
         for (const testData of validNames) {
             const inputValue = testData;
-            const expectedValue = inputValue;
 
-            const actualValue = packageNameFrom(inputValue, onError);
-
-            expect(actualValue).to.equal(expectedValue, "input value was: " + inputValue);
+            expect(() => { mustBePackageNameData(inputValue); }).to.not.throw();
         }
     });
 
@@ -110,7 +96,7 @@ describe("packageNameFrom()", () => {
         for (const testData of invalidNames) {
             const inputValue = testData;
 
-            expect(() => { packageNameFrom(inputValue, onError); }).to.throw("ONERROR CALLED");
+            expect(() => { mustBePackageNameData(inputValue, onError); }).to.throw("ONERROR CALLED");
         }
     });
 
@@ -124,7 +110,7 @@ describe("packageNameFrom()", () => {
         for (const testData of invalidNames) {
             const inputValue = testData;
 
-            expect(() => { packageNameFrom(inputValue, onError); }).to.throw("ONERROR CALLED");
+            expect(() => { mustBePackageNameData(inputValue, onError); }).to.throw("ONERROR CALLED");
         }
     });
 });

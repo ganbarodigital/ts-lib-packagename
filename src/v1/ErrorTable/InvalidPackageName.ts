@@ -31,23 +31,61 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-import { OnError } from "@ganbarodigital/ts-on-error/V1";
+import {
+    AppError,
+    AppErrorParams,
+    ErrorTableTemplateWithExtraData,
+    ExtraPublicData,
+    StructuredProblemReport,
+    StructuredProblemReportDataWithExtraData,
+} from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 
-import { isPackageNameData } from "./isPackageNameData";
+import { ERROR_TABLE, PackageErrorTable } from "./ErrorTable";
 
-/**
- * unique ID for our error
- */
-export const invalidPackageNameData = Symbol("@ganbarodigital/invalidPackageNameData");
+interface InvalidPackageNameExtraData extends ExtraPublicData {
+    public: {
+        packageName: string;
+    };
+}
 
-/**
- * data guarantee. calls the supplied OnError handler if the input string
- * does not meet the specification for a valid PackageName.
- */
-export function mustBePackageNameData(name: string, onError: OnError): void {
-    if (!isPackageNameData(name)) {
-        onError(invalidPackageNameData, "package name does not meet isPackageNameData() spec", { input: name});
+export type InvalidPackageNameTemplate = ErrorTableTemplateWithExtraData<
+    PackageErrorTable,
+    "invalid-package-name",
+    InvalidPackageNameExtraData
+>;
+
+type InvalidPackageNameData = StructuredProblemReportDataWithExtraData<
+    PackageErrorTable,
+    "invalid-package-name",
+    InvalidPackageNameTemplate,
+    InvalidPackageNameExtraData
+>;
+
+type InvalidPackageNameSPR = StructuredProblemReport<
+    PackageErrorTable,
+    "invalid-package-name",
+    InvalidPackageNameTemplate,
+    InvalidPackageNameExtraData,
+    InvalidPackageNameData
+>;
+
+export class InvalidPackageNameError extends AppError<
+    PackageErrorTable,
+    "invalid-package-name",
+    InvalidPackageNameTemplate,
+    InvalidPackageNameExtraData,
+    InvalidPackageNameData,
+    InvalidPackageNameSPR
+> {
+    public constructor(params: InvalidPackageNameExtraData & AppErrorParams) {
+        const errorData: InvalidPackageNameData = {
+            template: ERROR_TABLE["invalid-package-name"],
+            errorId: params.errorId,
+            extra: {
+                public: params.public,
+            },
+        };
+
+        super(StructuredProblemReport.from(errorData));
     }
-
-    // if we get here, all is well
 }

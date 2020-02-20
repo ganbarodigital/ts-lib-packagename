@@ -32,5 +32,5 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./ErrorTable";
-export * from "./PackageName";
+export { PackageErrorTable } from "./ErrorTable";
+export { InvalidPackageNameError } from "./InvalidPackageName";

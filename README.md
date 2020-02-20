@@ -66,11 +66,13 @@ Use [`packageNameFrom()`](#packagenamefrom) to create `PackageName` values.
 ### packageNameFrom()
 
 ```typescript
+import { OnError, THROW_THE_ERROR } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
+
 /**
  * smart constructor. Checks that the input string is a valid package name,
  * and converts it into a PackageName type.
  */
-export function packageNameFrom(name: string, onError: OnError): PackageName;
+export function packageNameFrom(name: string, onError: OnError = THROW_THE_ERROR): PackageName;
 ```
 
 `packageNameFrom()` is a _smart constructor_. Use it to turn strings into `PackageName` types.
@@ -92,11 +94,13 @@ We do not check that the named package actually exists. We only check that the n
 ### mustBePackageNameData()
 
 ```typescript
+import { OnError, THROW_THE_ERROR } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
+
 /**
  * data guarantee. calls the supplied OnError handler if the input string
  * does not meet the specification for a valid PackageName.
  */
-export function mustBePackageNameData(name: string, onError: OnError): void;
+export function mustBePackageNameData(name: string, onError: OnError = THROW_THE_ERROR): void;
 ```
 
 `mustBePackageNameData()` is a _data guarantee_. Use it to ensure that you're handling a valid PackageName string.
