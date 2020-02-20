@@ -32,7 +32,4 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export * from "./PackageName";
-export * from "./isPackageNameData";
-export * from "./mustBePackageNameData";
-export * from "./packageNameFrom";
+export * from "@ganbarodigital/ts-lib-error-reporting/lib/v1/internal/PackageName";

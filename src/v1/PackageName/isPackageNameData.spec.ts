@@ -34,7 +34,7 @@
 import { expect } from "chai";
 import { describe } from "mocha";
 
-import { isPackageNameData } from "./isPackageNameData";
+import { isPackageNameData } from ".";
 
 describe("isPackageNameData()", () => {
     it("supports non-scoped NPM package names", () => {

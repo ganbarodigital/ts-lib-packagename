@@ -35,7 +35,7 @@ import { AnyAppError } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 import { expect } from "chai";
 import { describe } from "mocha";
 
-import { mustBePackageNameData } from "./mustBePackageNameData";
+import { mustBePackageNameData } from ".";
 
 const onError = (e: AnyAppError): never => {
     throw new Error("ONERROR CALLED");
