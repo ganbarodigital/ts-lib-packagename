@@ -1,6 +1,6 @@
 {
   "name": "@ganbarodigital/ts-lib-packagename",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Provides a PackageName type",
   "repository": "github:ganbarodigital/ts-lib-packagename",
   "main": "lib/index.js",
