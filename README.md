@@ -26,7 +26,7 @@ npm install @ganbarodigital/ts-lib-packagename/v1
 
 ```typescript
 // add this import to your Typescript code
-import { PackageName, packageNameFrom } from "@ganbarodigital/ts-lib-packagename/v1"
+import { PackageName, packageNameFrom } from "@ganbarodigital/ts-lib-packagename/lib/v1"
 ```
 
 __VS Code users:__ once you've added a single import anywhere in your project, you'll then be able to auto-import anything else that this library exports.
@@ -56,7 +56,7 @@ __VS Code users:__ once you've added a single import anywhere in your project, y
  *
  * At runtime, PackageName resolves to being just a `string`.
  */
-export type PackageName = string & { _type: "@ganbarodigital/PackageName" };
+export type PackageName = string & { "@ganbarodigital/PackageName": "@ganbarodigital/PackageName" };
 ```
 
 `PackageName` is a _type_. (Strictly speaking, it's a _branded type_.) Use it to represent a valid TypeScript package name in type-safe code.

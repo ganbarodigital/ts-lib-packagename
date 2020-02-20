@@ -21,6 +21,16 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+## v0.2.3
+
+Released Thursday, 20th February 2020.
+
+### Refactor
+
+* We now republish internal types/functions from `ts-lib-error-reporting`
+  - addresses ongoing circular dependency problems
+  - ensures we never get out-of-sync with the definitions in `ts-lib-error-reporting`
+
 ## v0.2.2
 
 Released Thursday, 20th February 2020.
