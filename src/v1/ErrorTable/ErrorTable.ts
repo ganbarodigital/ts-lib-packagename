@@ -39,10 +39,12 @@ import {
 } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
 import { httpStatusCodeFrom } from "@ganbarodigital/ts-lib-http-types/lib/v1";
 
-import { packageNameFrom } from "../PackageName";
+import { PackageName } from "../PackageName";
 import { InvalidPackageNameTemplate } from "./InvalidPackageName";
 
-const PACKAGE_NAME = packageNameFrom("@ganbarodigital/ts-lib-packagename/lib/v1");
+// we can't use `packageNameFrom()` here, because ts-node (used by Mocha)
+// can't compile our tests if we do
+const PACKAGE_NAME = "@ganbarodigital/ts-lib-packagename/lib/v1" as PackageName;
 
 export class PackageErrorTable implements ErrorTable {
     // everything in this class has to follow the same structure
