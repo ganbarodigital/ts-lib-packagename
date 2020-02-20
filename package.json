@@ -26,19 +26,19 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@ganbarodigital/ts-lib-error-reporting": "^0.0.4",
-    "@types/node": "^13.1.2",
+    "@ganbarodigital/ts-lib-error-reporting": "^0.1.0",
+    "@types/node": "^13.7.4",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.8",
+    "@types/chai": "^4.2.9",
     "@types/mocha": "^7.0.1",
     "chai": "^4.2.0",
     "chai-bytes": "^0.1.2",
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
-    "rimraf": "^3.0.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^8.0.0"
   }
 }
