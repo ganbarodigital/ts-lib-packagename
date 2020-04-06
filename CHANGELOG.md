@@ -21,6 +21,15 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+## v0.2.4
+
+Released Monday, 6th April 2020.
+
+### Dependencies
+
+* Upgraded everything to fix a vulnerability in `minimist`
+* Moved TypeScript et al into the `devDependencies` section
+
 ## v0.2.3
 
 Released Thursday, 20th February 2020.
