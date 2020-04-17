@@ -1,6 +1,6 @@
 {
   "name": "@ganbarodigital/ts-lib-packagename",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Provides a PackageName type",
   "repository": "github:ganbarodigital/ts-lib-packagename",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@ganbarodigital/ts-lib-error-reporting": "^0.2.2",
+    "@ganbarodigital/ts-lib-error-reporting": "^0.3.0",
     "@ganbarodigital/ts-lib-http-types": "^0.1.5"
   },
   "devDependencies": {
