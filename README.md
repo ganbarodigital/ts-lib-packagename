@@ -1,5 +1,7 @@
 # PackageName Type for Typescript
 
+![Node.js CI](https://github.com/ganbarodigital/ts-lib-packagename/workflows/Node.js%20CI/badge.svg)
+
 ## Introduction
 
 This TypeScript micro-library provides a `PackageName` type, along with helpers for validating the data.
