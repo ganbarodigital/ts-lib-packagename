@@ -21,6 +21,10 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+### Dependencies
+
+* Upgraded to v0.3 of `@ganbarodigital/ts-lib-error-reporting'
+
 ## v0.2.4
 
 Released Monday, 6th April 2020.

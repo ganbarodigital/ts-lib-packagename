@@ -26,7 +26,7 @@
   ],
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@ganbarodigital/ts-lib-error-reporting": "^0.2.2",
+    "@ganbarodigital/ts-lib-error-reporting": "^0.3.0",
     "@ganbarodigital/ts-lib-http-types": "^0.1.5"
   },
   "devDependencies": {
