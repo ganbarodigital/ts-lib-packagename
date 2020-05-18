@@ -21,6 +21,10 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+## v0.3.1
+
+Released Monday, 18th May 2020.
+
 ### Dependencies
 
 * Upgraded to `v0.3.0` of `@ganbarodigital/ts-lib-http-types`
