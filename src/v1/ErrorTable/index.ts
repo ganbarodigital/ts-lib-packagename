@@ -32,4 +32,5 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-export { PackageErrorTable, InvalidPackageNameError } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";
+export { PackageErrorTable } from "@ganbarodigital/ts-lib-error-reporting/lib/v1/Errors/PackageErrorTable";
+export { InvalidPackageNameError } from "@ganbarodigital/ts-lib-error-reporting/lib/v1";

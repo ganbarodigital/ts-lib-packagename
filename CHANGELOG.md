@@ -21,6 +21,19 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+## v0.3.2
+
+Released Tuesday, 19th May 2020.
+
+### Fixes
+
+* No longer relies on the `internal` export file from ts-lib-error-reporting
+
+### Dependencies
+
+* Upgraded to `@ganbarodigital/ts-lib-error-reporting` v0.3.3.
+* Upgraded to TypeScript v3.9.x
+
 ## v0.3.1
 
 Released Monday, 18th May 2020.
